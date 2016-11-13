@@ -42,6 +42,44 @@ namespace NHibernateDemo
                     select customer;
                 customers2.ForEach(c => Console.WriteLine($"{c.FirstName,-10} {c.LastName}"));
 
+                // create a new Customer
+
+                var customerQuery = from customer in session.Query<Customer>()
+                    where customer.FirstName == "James" && customer.LastName == "Bond"
+                    select customer;
+
+                if (!customerQuery.Any())
+                {
+                    var newCustomer = new Customer { FirstName = "James", LastName = "Bond" };
+                    session.Save(newCustomer);
+                    Console.WriteLine($"Created a new Customer '{newCustomer.FirstName} {newCustomer.LastName}' with Id ({newCustomer.Id}).");
+                }
+                else
+                {
+
+                    Console.WriteLine("Found a customer. Options: 1) to update 2) delete");
+                    var option = Console.ReadLine();
+
+                    var existingCustomer = customerQuery.First();
+
+                    switch (option)
+                    {
+                        case "1":
+                            existingCustomer.LastName = "Blond";
+                            session.Update(existingCustomer);
+                            Console.WriteLine("Updated existing Customer.");
+                            break;
+                        case "2":
+                            session.Delete(existingCustomer);
+                            Console.WriteLine("Deleted existing Customer.");
+                            break;
+                        default:
+                            Console.WriteLine($"Option '{option}' is not recognised. Nothing done.");
+                            break;
+                    }
+
+                }
+
                 tx.Commit();
             }
             Console.WriteLine("Press <ENTER> to exit...");
