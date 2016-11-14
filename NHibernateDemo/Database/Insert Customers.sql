@@ -1,4 +1,4 @@
-﻿INSERT INTO [dbo].[Customer] VALUES
+﻿INSERT INTO [dbo].[Customer] (FirstName, LastName) VALUES
 (N'John', N'Smith'),
 (N'Joe' , N'Blogger'),
 (N'Deon', N'Fraser'),

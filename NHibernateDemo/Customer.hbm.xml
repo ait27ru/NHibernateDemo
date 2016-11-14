@@ -9,5 +9,10 @@
     </id>
     <property name="FirstName" />
     <property name="LastName" />
+    <property name="Points" />
+    <property name="HasGoldStatus" />
+    <property name="MemberSince" />
+    <property name="CreditRating" />
+    <property name="CreditRatingText" type="CustomerCreditRatingType" />
   </class>
 </hibernate-mapping>
