@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
@@ -26,6 +27,16 @@ namespace NHibernateDemo
 
             var sessionFactory = cfg.BuildSessionFactory();
 
+            SaveAndModifyCustomer(sessionFactory);
+
+            SaveAndRead(sessionFactory);
+
+            Console.WriteLine("Press <ENTER> to exit...");
+            Console.ReadLine();
+        }
+
+        private static void SaveAndModifyCustomer(ISessionFactory sessionFactory)
+        {
             using (var session = sessionFactory.OpenSession())
             {
                 using (var tx = session.BeginTransaction())
@@ -85,8 +96,37 @@ namespace NHibernateDemo
                     tx.Commit();
                 }
             }
-            Console.WriteLine("Press <ENTER> to exit...");
-            Console.ReadLine();
+        }
+
+        private static void SaveAndRead(ISessionFactory sessionFactory)
+        {
+            int newId;
+
+            using (var session = sessionFactory.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    var newCustomer = CreateCustomer();
+                    newCustomer.LastName = "Gerrard";
+                    newCustomer.MemberSince = null;
+                    Console.WriteLine("Before saving:");
+                    Console.WriteLine(newCustomer);
+                    session.Save(newCustomer);
+                    newId = newCustomer.Id;
+                    tx.Commit();
+                }
+            }
+
+            using (var session = sessionFactory.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    var customer = session.Load<Customer>(newId);
+                    Console.WriteLine("After saving:");
+                    Console.WriteLine(customer);
+                    tx.Commit();
+                }
+            }
         }
 
         private static Customer CreateCustomer()
@@ -95,6 +135,7 @@ namespace NHibernateDemo
             {
                 FirstName = "John",
                 LastName = "Doe",
+                AverageRating = 10.12345678,
                 Points = 100,
                 HasGoldStatus = true,
                 MemberSince = new DateTime(2012, 1, 1),
