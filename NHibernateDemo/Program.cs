@@ -47,7 +47,8 @@ namespace NHibernateDemo
                     var newCustomer = CreateCustomer();
 
                     var customerQuery = from customer in session.Query<Customer>()
-                        where (customer.FirstName == newCustomer.FirstName) && (customer.LastName == newCustomer.LastName)
+                        where
+                        (customer.FirstName == newCustomer.FirstName) && (customer.LastName == newCustomer.LastName)
                         select customer;
 
                     if (!customerQuery.Any())
@@ -60,7 +61,8 @@ namespace NHibernateDemo
                     {
                         var existingCustomer = customerQuery.First();
 
-                        Console.WriteLine($"Found a customer '{existingCustomer.FirstName} {existingCustomer.LastName}'. Options: 1) to update 2) delete");
+                        Console.WriteLine(
+                            $"Found a customer '{existingCustomer.FirstName} {existingCustomer.LastName}'. Options: 1) to update 2) delete");
                         var option = Console.ReadLine();
 
                         switch (option)

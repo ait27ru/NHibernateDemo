@@ -15,12 +15,17 @@ namespace NHibernateDemo
 
         public override string ToString()
         {
-            return $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}, {nameof(Points)}: {Points}, {nameof(HasGoldStatus)}: {HasGoldStatus}, {nameof(MemberSince)}: {MemberSince}, {nameof(CreditRating)}: {CreditRating}, {nameof(CreditRatingText)}: {CreditRatingText}";
+            return
+                $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}, {nameof(Points)}: {Points}, {nameof(HasGoldStatus)}: {HasGoldStatus}, {nameof(MemberSince)}: {MemberSince}, {nameof(CreditRating)}: {CreditRating}, {nameof(CreditRatingText)}: {CreditRatingText}";
         }
     }
 
     public enum CustomerCreditRating
     {
-        Excellent = 0, Good, Neutral, Poor, Terrible
+        Excellent = 0,
+        Good,
+        Neutral,
+        Poor,
+        Terrible
     }
 }
