@@ -15,5 +15,13 @@
     <property name="MemberSince" type="LocalDateTime" />
     <property name="CreditRating" />
     <property name="CreditRatingText" type="CustomerCreditRatingType" />
+
+    <component name="Address">
+      <property name="Street" />
+      <property name="City" />
+      <property name="Province" />
+      <property name="Country" />
+    </component>
+    
   </class>
 </hibernate-mapping>

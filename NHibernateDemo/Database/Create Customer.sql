@@ -11,6 +11,10 @@ CREATE TABLE [dbo].[Customer] (
 	[HasGoldStatus] BIT NULL,
 	[MemberSince] DATE NULL,
 	[CreditRating] NVARCHAR(10) NULL,
-	[CreditRatingText] NVARCHAR(10) NULL
+	[CreditRatingText] NVARCHAR(10) NULL,
+    [Street] NVARCHAR (50) NULL,
+    [City] NVARCHAR (50) NULL,
+    [Province] NVARCHAR (50) NULL,
+    [Country] NVARCHAR (50) NULL
     CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED ([Id] ASC)
 );

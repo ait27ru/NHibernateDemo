@@ -13,11 +13,11 @@ namespace NHibernateDemo
         public virtual DateTime? MemberSince { get; set; }
         public virtual CustomerCreditRating? CreditRating { get; set; }
         public virtual CustomerCreditRating? CreditRatingText { get; set; }
+        public virtual Location Address { get; set; }
 
         public override string ToString()
         {
-            return
-                $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}, {nameof(Points)}: {Points}, {nameof(HasGoldStatus)}: {HasGoldStatus}, {nameof(MemberSince)}: {MemberSince}, {nameof(CreditRating)}: {CreditRating}, {nameof(CreditRatingText)}: {CreditRatingText}, {nameof(AverageRating)}: {AverageRating}";
+            return $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}, {nameof(AverageRating)}: {AverageRating}, {nameof(Points)}: {Points}, {nameof(HasGoldStatus)}: {HasGoldStatus}, {nameof(MemberSince)}: {MemberSince}, {nameof(CreditRating)}: {CreditRating}, {nameof(CreditRatingText)}: {CreditRatingText}, {nameof(Address)}: {Address}";
         }
     }
 

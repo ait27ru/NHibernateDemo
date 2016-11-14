@@ -27,7 +27,7 @@ namespace NHibernateDemo
 
             var sessionFactory = cfg.BuildSessionFactory();
 
-            SaveAndModifyCustomer(sessionFactory);
+            //SaveAndModifyCustomer(sessionFactory);
 
             SaveAndRead(sessionFactory);
 
@@ -140,7 +140,14 @@ namespace NHibernateDemo
                 HasGoldStatus = true,
                 MemberSince = new DateTime(2012, 1, 1),
                 CreditRating = CustomerCreditRating.Good,
-                CreditRatingText = CustomerCreditRating.Good
+                CreditRatingText = CustomerCreditRating.Good,
+                Address = new Location
+                {
+                    Street = "123 Somewhere St",
+                    City = "Nowhere",
+                    Province = "Alberta",
+                    Country = "Canada"
+                }
             };
         }
     }
