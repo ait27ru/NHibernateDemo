@@ -5,7 +5,7 @@
                    namespace="NHibernateDemo">
   <class name="Customer">
     <id name="Id">
-      <generator class="native" />
+      <generator class="guid.comb" />
     </id>
     <property name="FirstName" />
     <property name="LastName" />

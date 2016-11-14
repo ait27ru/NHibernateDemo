@@ -109,7 +109,7 @@ namespace NHibernateDemo
 
         private static void SaveAndRead(ISessionFactory sessionFactory)
         {
-            int newId;
+            Guid newId;
 
             using (var session = sessionFactory.OpenSession())
             {

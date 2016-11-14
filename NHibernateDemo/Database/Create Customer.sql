@@ -3,7 +3,7 @@
 DROP TABLE dbo.Customer;
 
 CREATE TABLE [dbo].[Customer] (
-    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [Id] UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
     [FirstName] NVARCHAR (50) NOT NULL,
     [LastName]  NVARCHAR (50) NOT NULL,
 	[AverageRating] DECIMAL(18,4) NULL,
@@ -16,5 +16,4 @@ CREATE TABLE [dbo].[Customer] (
     [City] NVARCHAR (50) NULL,
     [Province] NVARCHAR (50) NULL,
     [Country] NVARCHAR (50) NULL
-    CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
