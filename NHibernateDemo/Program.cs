@@ -16,14 +16,23 @@ namespace NHibernateDemo
         {
             var cfg = new Configuration();
 
+            //cfg.DataBaseIntegration(x =>
+            //{
+            //    x.ConnectionStringName = "DemoConnection";
+            //    x.Driver<SqlClientDriver>();
+            //    x.Dialect<MsSql2012Dialect>();
+            //});
+            //cfg.AddAssembly(Assembly.GetExecutingAssembly());
+
+            cfg.Configure();
+
             cfg.DataBaseIntegration(x =>
             {
-                x.ConnectionStringName = "DemoConnection";
-                x.Driver<SqlClientDriver>();
-                x.Dialect<MsSql2012Dialect>();
+                x.Timeout = 10;
+                x.LogSqlInConsole = true;
             });
 
-            cfg.AddAssembly(Assembly.GetExecutingAssembly());
+            cfg.SessionFactory().GenerateStatistics();
 
             var sessionFactory = cfg.BuildSessionFactory();
 

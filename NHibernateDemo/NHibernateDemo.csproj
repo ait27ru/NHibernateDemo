@@ -65,6 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Customer.hbm.xml" />
     <Content Include="Database\Create Customer.sql" />
     <Content Include="Database\Insert Customers.sql" />
