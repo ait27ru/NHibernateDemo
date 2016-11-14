@@ -2,7 +2,7 @@
 
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="NHibernateDemo"
-                   namespace="NHibernateDemo">
+                   namespace="NHibernateDemo.Entities">
   <class name="Customer">
     <id name="Id">
       <generator class="guid.comb" />
@@ -22,6 +22,11 @@
       <property name="Province" />
       <property name="Country" />
     </component>
-    
+
+    <set name="Orders" table="`Order`">
+      <key column="CustomerId" />
+      <one-to-many class="Order" />
+    </set>
+
   </class>
 </hibernate-mapping>

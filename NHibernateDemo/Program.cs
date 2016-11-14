@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Driver;
 using NHibernate.Linq;
 using NHibernate.Util;
+using NHibernateDemo.Entities;
 
 namespace NHibernateDemo
 {
@@ -68,7 +66,7 @@ namespace NHibernateDemo
 
                     var customerQuery = from customer in session.Query<Customer>()
                         where
-                        (customer.FirstName == newCustomer.FirstName) && (customer.LastName == newCustomer.LastName)
+                            (customer.FirstName == newCustomer.FirstName) && (customer.LastName == newCustomer.LastName)
                         select customer;
 
                     if (!customerQuery.Any())
@@ -121,6 +119,7 @@ namespace NHibernateDemo
                     Console.WriteLine("Before saving:");
                     Console.WriteLine(newCustomer);
                     session.Save(newCustomer);
+
                     newId = newCustomer.Id;
                     tx.Commit();
                 }
@@ -150,13 +149,18 @@ namespace NHibernateDemo
                 MemberSince = new DateTime(2012, 1, 1),
                 CreditRating = CustomerCreditRating.Good,
                 CreditRatingText = CustomerCreditRating.Good,
-                Address = new Location
-                {
-                    Street = "123 Somewhere St",
-                    City = "Nowhere",
-                    Province = "Alberta",
-                    Country = "Canada"
-                }
+                Address = CreateLocation()
+            };
+        }
+
+        private static Location CreateLocation()
+        {
+            return new Location
+            {
+                Street = "123 Somewhere St",
+                City = "Nowhere",
+                Province = "Alberta",
+                Country = "Canada"
             };
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace NHibernateDemo
+﻿namespace NHibernateDemo.Entities
 {
     public class Location
     {
@@ -9,7 +9,8 @@
 
         public override string ToString()
         {
-            return $"{nameof(Street)}: {Street}, {nameof(City)}: {City}, {nameof(Province)}: {Province}, {nameof(Country)}: {Country}";
+            return
+                $"{nameof(Street)}: {Street}, {nameof(City)}: {City}, {nameof(Province)}: {Province}, {nameof(Country)}: {Country}";
         }
     }
 }

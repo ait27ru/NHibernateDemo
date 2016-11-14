@@ -1,6 +1,6 @@
 ﻿using NHibernate.Type;
 
-namespace NHibernateDemo
+namespace NHibernateDemo.Entities
 {
     public class CustomerCreditRatingType : EnumStringType<CustomerCreditRating>
     {
